@@ -1,6 +1,7 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, DeepPartial, ManyToOne, OneToMany } from "typeorm"
 import { BaseEntity } from "../base/base.entity"
+import { MajorEntity } from "../major/entities/major.entity"
 
 
 @Entity({name:'Categories'})
@@ -14,7 +15,11 @@ export class CategoryEntity extends BaseEntity {
     @Column()
     description: string
 
-    // @OneToMany(() =>CategoryDetailEntity, (category_detail) => category_detail.category)
-    // category_detail: CategoryDetailEntity
+    @OneToMany(
+        () => MajorEntity,
+        (major) => major.category,
+        // {onDelete: "RESTRICT"}
+    )
+    majors: MajorEntity[];
 }
     
