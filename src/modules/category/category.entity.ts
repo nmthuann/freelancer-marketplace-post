@@ -5,7 +5,7 @@ import { MajorEntity } from "../major/entities/major.entity"
 
 
 @Entity({name:'Categories'})
-export class CategoryEntity extends BaseEntity { 
+export class CategoryEntity extends BaseEntity {  //extends BaseEntity
     @PrimaryGeneratedColumn()
     category_id: number
 

@@ -6,7 +6,7 @@ import { PackageEntity } from "./package.entity";
 import { ReviewEntity } from "src/modules/review/review.entity";
 
 @Entity({name: 'Posts'})
-export class PostEntity extends BaseEntity {
+export class PostEntity  extends BaseEntity { //extends BaseEntity
     @PrimaryGeneratedColumn('uuid')
     post_id: string;
 
@@ -18,6 +18,10 @@ export class PostEntity extends BaseEntity {
 
     @Column({nullable: false})
     description: string;
+
+    @Column({ default: 'active' }) // length: 50,
+     // 0: active  1: unchecked 2. stopped 3 tạm ngưng
+    status: string;
 
     @Column()
     FAQ: string

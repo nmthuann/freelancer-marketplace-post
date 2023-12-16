@@ -1,27 +1,28 @@
-import {
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  UpdateDateColumn,
-} from 'typeorm';
+import { 
+    CreateDateColumn, 
+    DeleteDateColumn, 
+    Entity, 
+    UpdateDateColumn 
+} from "typeorm";
 
 @Entity()
-export abstract class BaseEntity {
-  @CreateDateColumn({
-    name: 'created_at',
-    default: () => 'CURRENT_TIMESTAMP',
-  })
-  createdAt: Date;
+export abstract class BaseEntity{
 
-  @UpdateDateColumn({
-    name: 'updated_at',
-    default: () => 'CURRENT_TIMESTAMP',
-    onUpdate: 'CURRENT_TIMESTAMP',
-  })
-  updatedAt: Date;
+@CreateDateColumn({
+  name: 'created_at',
+  default: () => 'CURRENT_TIMESTAMP(6)',
+})
+createdAt: Date;
 
-  @DeleteDateColumn({
-    name: 'deleted_at',
-  })
-  deletedAt: Date;
+@UpdateDateColumn({
+  name: 'updated_at',
+  default: () => 'CURRENT_TIMESTAMP(6)',
+  onUpdate: 'CURRENT_TIMESTAMP(6)',
+})
+updatedAt: Date;
+
+    @DeleteDateColumn({
+        name: 'deleted_at',
+    })
+    deletedAt: Date;
 }

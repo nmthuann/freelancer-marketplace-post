@@ -11,7 +11,7 @@ import { PostEntity } from '../post/entities/post.entity';
  * 
  */
 @Entity({ name: 'Reviews' }) // Set the table name explicitly (optional)
-export class ReviewEntity extends BaseEntity {
+export class ReviewEntity extends BaseEntity { //
     @PrimaryGeneratedColumn()
     review_id: number;
 
