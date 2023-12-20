@@ -12,7 +12,6 @@ import { PackageEntity } from './modules/post/entities/package.entity';
 import { ReviewEntity } from './modules/review/review.entity';
 import { ImageEntity } from './modules/post/entities/image.entity';
 import * as dotenv from 'dotenv';
-import { BaseEntity } from './modules/base/base.entity';
 dotenv.config();
 
 @Module({
