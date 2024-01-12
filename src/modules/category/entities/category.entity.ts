@@ -1,7 +1,7 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, DeepPartial, ManyToOne, OneToMany } from "typeorm"
-import { BaseEntity } from "../base/base.entity"
-import { MajorEntity } from "../major/entities/major.entity"
+import { BaseEntity } from "../../base/base.entity"
+import { MajorEntity } from "../../major/entities/major.entity"
 
 
 @Entity({name:'Categories'})

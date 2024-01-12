@@ -1,6 +1,6 @@
-import { CategoryEntity } from "src/modules/category/category.entity";
+import { CategoryEntity } from "src/modules/category/entities/category.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { MajorAttributeValueEntity } from "./major.value.enity";
+import { MajorAttributeValueEntity } from "./major.value.entity";
 import { PostEntity } from "src/modules/post/entities/post.entity";
 
 

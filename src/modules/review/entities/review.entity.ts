@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
-import { BaseEntity } from '../base/base.entity';
-import { PostEntity } from '../post/entities/post.entity';
+import { BaseEntity } from '../../base/base.entity';
+import { PostEntity } from '../../post/entities/post.entity';
 
 
 

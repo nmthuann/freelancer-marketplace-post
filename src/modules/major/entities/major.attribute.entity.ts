@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { MajorAttributeValueEntity } from "./major.value.enity";
+import { MajorAttributeValueEntity } from "./major.value.entity";
 
 
 @Entity({name:'MajorAttributes'})
@@ -9,7 +9,6 @@ export class MajorAttributeEntity {
 
     @Column({nullable: false})
     major_attribute_name: string;
-
     
     @OneToMany(
         () => MajorAttributeValueEntity,

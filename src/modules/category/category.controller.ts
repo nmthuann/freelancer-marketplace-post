@@ -13,7 +13,7 @@ import { ICategoryService } from './category.service.interface';
 
 import { DeleteResult } from 'typeorm';
 import { CategoryDto } from './category.dto';
-import { CategoryEntity } from './category.entity';
+import { CategoryEntity } from './entities/category.entity';
 import { BaseController } from '../base/base.controller';
 
 // working with DTO

@@ -26,7 +26,4 @@ export class MajorAttributeValueEntity {
     }) 
     @JoinColumn({ name: 'major_attribute_id' })
     major_attribute: MajorAttributeEntity;
-
-
-
 }

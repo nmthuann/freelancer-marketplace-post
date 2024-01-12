@@ -3,7 +3,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColum
 import { ImageEntity } from "./image.entity";
 import { MajorEntity } from "src/modules/major/entities/major.entity";
 import { PackageEntity } from "./package.entity";
-import { ReviewEntity } from "src/modules/review/review.entity";
+import { ReviewEntity } from "src/modules/review/entities/review.entity";
 
 @Entity({name: 'Posts'})
 export class PostEntity  extends BaseEntity { //extends BaseEntity
