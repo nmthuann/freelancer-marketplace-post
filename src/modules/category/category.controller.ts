@@ -12,7 +12,7 @@ import {
 import { ICategoryService } from './category.service.interface';
 
 import { DeleteResult } from 'typeorm';
-import { CategoryDto } from './category.dto';
+import { CategoryDto } from './dtos/category.dto';
 import { CategoryEntity } from './entities/category.entity';
 import { BaseController } from '../base/base.controller';
 
@@ -26,6 +26,10 @@ export class CategoryController extends BaseController <CategoryEntity> {
     super(categoryService)
   }
 
+  async createCategory(@Body() category: CategoryDto): Promise<CategoryEntity> {
+    console.log('createCategory.......................');
+    return await this.categoryService.createOne(category);
+  }
   
 }
 
