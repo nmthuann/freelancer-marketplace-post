@@ -1,11 +1,11 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
-import {  Repository } from 'typeorm';
+import {  DataSource, Repository } from 'typeorm';
 import { CategoryEntity } from './entities/category.entity';
 import { ICategoryService } from './category.service.interface';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BaseService } from '../base/base.abstract';
 import { CreateCategoryDto } from './dtos/create-category.dto';
-import { AppDataSource } from 'src/database/datasource';
+// import { AppDataSource } from 'src/database/datasource';
 
 @Injectable()
 export class CategoryService
@@ -15,7 +15,9 @@ export class CategoryService
   constructor(
     @InjectRepository(CategoryEntity)
     private categoryRepository: Repository<CategoryEntity>,
+    private dataSource: DataSource,
   ) {
+
     super(categoryRepository);
   }
 
@@ -37,12 +39,14 @@ export class CategoryService
     });
 
     if (!parentCategory) {
-      throw new NotFoundException('');
+      throw new NotFoundException('sss');
     }
 
     // create transaction
-    // const updateCategory = 
-    return await AppDataSource.manager.transaction(async (transactionalEntityManager) => {
+    // const updateCategory =   
+
+    const connection = this.dataSource.manager;
+    return await connection.transaction(async (transactionalEntityManager) => {
       // execute queries using transactionalEntityManager
       await transactionalEntityManager.update(
         CategoryEntity,

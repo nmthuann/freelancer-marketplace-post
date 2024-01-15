@@ -8,6 +8,6 @@ async function bootstrap() {
   await app.listen(
     PORT, 
     () => console.log(`POST SERVICE connect successfully .......\nhttp://localhost:${PORT}`)
-  );
+  ); 
 }
 bootstrap();

@@ -1,9 +1,14 @@
 import * as dotenv from 'dotenv';
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
+import { SeederOptions } from 'typeorm-extension';
 
 dotenv.config();
 
-export const AppDataSource = new DataSource({
+/**
+ * new DataSource(options: DataSourceOptions): DataSource;
+ * SeederOptions?
+ */
+export const AppDataSource: DataSourceOptions & SeederOptions =  ({
   type: 'mysql',
   host: process.env.DATABASE_HOST,
   port: parseInt(process.env.DATABASE_PORT),
@@ -15,6 +20,8 @@ export const AppDataSource = new DataSource({
   logging: false,
   synchronize: false,
   migrationsRun: false,
+  seeds: ['dist/src/databaseb/seeds/**/*.js'],
+   factories: ['dist/src/databaseb/factories/**/*.js'],
   extra: {
     charset: 'utf8mb4_unicode_ci',
   },

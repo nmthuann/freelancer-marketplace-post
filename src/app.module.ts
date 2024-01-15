@@ -7,8 +7,8 @@ import { AppDataSource } from './database/datasource';
 dotenv.config();
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot(AppDataSource.options),
+  imports: [  
+    TypeOrmModule.forRoot(AppDataSource),
     ],
   controllers: [AppController],
   providers: [AppService],

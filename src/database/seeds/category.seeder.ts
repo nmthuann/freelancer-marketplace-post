@@ -1,20 +1,34 @@
-// src/db/seeds/user.seeder.ts
+// // src/db/seeds/CategorySeeder.ts
 
-import { CategoryEntity } from "src/modules/category/entities/category.entity";
-import { DataSource } from "typeorm";
-import { Seeder, SeederFactoryManager } from "typeorm-extension";
+import { Repository } from 'typeorm';
+import { DataSource } from 'typeorm';
+import { Seeder, SeederFactoryManager } from 'typeorm-extension';
+import { CategoryEntity } from 'src/modules/category/entities/category.entity';
+
 
 export default class CategorySeeder implements Seeder {
-  public async run(
-    dataSource: DataSource,
-    factoryManager: SeederFactoryManager,
-  ): Promise<void> {
+  public async run(dataSource: DataSource,
+     factoryManager: SeederFactoryManager,): Promise<void> {
+    try {
+      const connection = dataSource.manager.connection;
 
-    const userFactory = factoryManager.get(CategoryEntity);
-    // save 1 factory generated entity, to the database
-    await userFactory.save();
+      await connection.transaction(async (transactionalEntityManager) => {
+        const categoryRepository: Repository<CategoryEntity> = transactionalEntityManager.getRepository(
+          CategoryEntity,
+        );
 
-    // save 5 factory generated entities, to the database
-    await userFactory.saveMany(5);
+        await transactionalEntityManager.query('ALTER TABLE `category` AUTO_INCREMENT = 1;');
+
+        // Seed categories using the factory
+        const categoriesToSave = factoryManager.get(CategoryEntity);
+
+        await transactionalEntityManager.save(categoriesToSave);
+
+        // Commit the transaction
+      });
+    } catch (error) {
+      console.error('Error seeding database::::', error);
+      throw error;
+    }
   }
 }
