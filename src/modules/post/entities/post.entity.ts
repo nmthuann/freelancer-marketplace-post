@@ -1,12 +1,12 @@
-import { BaseEntity } from "src/modules/base/base.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ImageEntity } from "./image.entity";
 import { MajorEntity } from "src/modules/major/entities/major.entity";
 import { PackageEntity } from "./package.entity";
 import { ReviewEntity } from "src/modules/review/entities/review.entity";
+import { AbstractBaseEntity } from "src/modules/base/base.abstract.entity";
 
 @Entity({name: 'Posts'})
-export class PostEntity  extends BaseEntity { //extends BaseEntity
+export class PostEntity  extends AbstractBaseEntity { //extends BaseEntity
     @PrimaryGeneratedColumn('uuid')
     post_id: string;
 

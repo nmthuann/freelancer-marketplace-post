@@ -1,5 +1,5 @@
 
-import { IBaseService } from '../base/base.interface';
+import { IBaseService } from '../base/base.service.interface';
 import { MajorEntity } from './entities/major.entity';
 
 

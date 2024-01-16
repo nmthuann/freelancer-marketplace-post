@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
-import { BaseEntity } from '../../base/base.entity';
 import { PostEntity } from '../../post/entities/post.entity';
+import { AbstractBaseEntity } from 'src/modules/base/base.abstract.entity';
 
 
 
@@ -11,7 +11,7 @@ import { PostEntity } from '../../post/entities/post.entity';
  * 
  */
 @Entity({ name: 'Reviews' }) // Set the table name explicitly (optional)
-export class ReviewEntity extends BaseEntity { //
+export class ReviewEntity extends AbstractBaseEntity { //
     @PrimaryGeneratedColumn()
     review_id: number;
 

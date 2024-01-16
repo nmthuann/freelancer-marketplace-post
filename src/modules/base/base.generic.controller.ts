@@ -1,5 +1,5 @@
 import { Body, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { IBaseService } from "./base.interface";
+import { IBaseService } from "./base.service.interface";
 
 export class BaseController<T>{
 
@@ -12,13 +12,13 @@ export class BaseController<T>{
 	}
 
 
-	@Post()
-	// @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
-	// @ApiResponse({ status: 403, description: 'Forbidden.'})
-	// @ApiResponse({ status: 400, description: 'Bad Request.'})
-	async create(@Body() data: any): Promise<T> {
-		return await this.baseService.createOne(data);
-	}
+	// @Post('create')
+	// // @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
+	// // @ApiResponse({ status: 403, description: 'Forbidden.'})
+	// // @ApiResponse({ status: 400, description: 'Bad Request.'})
+	// async createOne(@Body() data: any) {
+	// 	return await this.baseService.createOne(data);
+	// }
 
 
     @Get(':id')

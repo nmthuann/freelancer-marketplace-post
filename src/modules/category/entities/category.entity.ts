@@ -1,19 +1,19 @@
 
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, DeepPartial, ManyToOne, OneToMany } from "typeorm"
-import { BaseEntity } from "../../base/base.entity"
 import { MajorEntity } from "../../major/entities/major.entity"
+import { AbstractBaseEntity } from "src/modules/base/base.abstract.entity";
 
 
 @Entity({name:'Categories'})
-export class CategoryEntity extends BaseEntity {
+export class CategoryEntity extends AbstractBaseEntity {
     @PrimaryGeneratedColumn()
     category_id: number
 
     @Column({nullable: false})
     category_name: string
 
-    @Column()
-    description: string;
+    @Column({nullable: true})
+    description?: string;
 
     /**
      * Kỹ thuật: Nested Set Model 
