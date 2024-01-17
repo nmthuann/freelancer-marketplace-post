@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { SeederOptions } from 'typeorm-extension';
+// import { SeederOptions } from 'typeorm-extension';
 
 dotenv.config();
 
@@ -18,7 +18,7 @@ export const AppDataSource = new DataSource ({ //
   entities: ['dist/**/!(*base).entity.js'], ///**/!(*base).entity.js
   migrations: ['dist/**/migrations/*.js'], // //__dirname + '/**/migrations/*.js'
   logging: false,
-  synchronize: false,
+  synchronize: true,
   migrationsRun: false,
   // seeds: ['dist/src/database/seeds/**/*.seeder.js'],
   // factories: ['dist/src/database/factories/**/*.js'],

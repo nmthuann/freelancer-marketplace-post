@@ -73,19 +73,7 @@ export class CategoryService
     return await this.dataSource.manager.transaction(
       "SERIALIZABLE",
       async (transactionalEntityManager) => {
-      // execute queries using transactionalEntityManager
-      // await transactionalEntityManager.update(
-      //   CategoryEntity,
-      //   { right_value: { $gte: parentCategory.right_value } },
-      //   { right_value: () => '"right_value" + 2' },
-      // );
-
-      // // Increase left_value of all parent nodes > left_value of the current node
-      // await transactionalEntityManager.update(
-      //   CategoryEntity,
-      //   { left_value: { $gt: parentCategory.right_value } },
-      //   { left_value: () => '"left_value" + 2' },
-      // );
+     
       await transactionalEntityManager.query(
         `UPDATE categories
         SET right_value = right_value + 2 
@@ -111,6 +99,7 @@ export class CategoryService
 
       try {
         await transactionalEntityManager.save(CategoryEntity, newCategory);
+        
       } catch (error) {
         throw new ConflictException('Error creating category');
       }
@@ -120,3 +109,19 @@ export class CategoryService
   }
 
 }
+
+
+
+ // execute queries using transactionalEntityManager
+      // await transactionalEntityManager.update(
+      //   CategoryEntity,
+      //   { right_value: { $gte: parentCategory.right_value } },
+      //   { right_value: () => '"right_value" + 2' },
+      // );
+
+      // // Increase left_value of all parent nodes > left_value of the current node
+      // await transactionalEntityManager.update(
+      //   CategoryEntity,
+      //   { left_value: { $gt: parentCategory.right_value } },
+      //   { left_value: () => '"left_value" + 2' },
+      // );

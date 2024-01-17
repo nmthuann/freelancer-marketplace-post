@@ -18,11 +18,13 @@ export class PackageEntity {
     @Column({ nullable: false })
     delivery_day: number;
 
-    @Column({ nullable: false })
-    unit_price: number;
+    // @Column({ nullable: false })
+    // unit_price: number;
 
     // Bảng packages có khóa ngoại tham chiếu đến bảng posts
     @ManyToOne(() => PostEntity, { onUpdate: 'CASCADE' }) 
     @JoinColumn({ name: 'post_id' })
     post: PostEntity;
+
+
 }

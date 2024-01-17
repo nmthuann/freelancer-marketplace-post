@@ -4,13 +4,13 @@ networks:
   default:
 
 services:
-  mysql-container:
-    container_name: mysql-db-container
+  mysql-post-db-container:
+    container_name: mysql-post-service-container
     image: mysql:8.2.0
     ports:
-      - "3307:3306"
+      - "3308:3306"
     volumes:
-      - mysqldata:/etc/mysql/conf.d 
+      - mysql_post_service_data:/etc/mysql/conf.d 
     env_file: ./.env
     environment:
       - MYSQL_ROOT_PASSWORD=$MYSQL_DB_PASSWORD
@@ -18,13 +18,13 @@ services:
     networks:
       - default
 
-  freelancer-marketplace-user:
-    container_name: freelancer-marketplace-user
-    image: freelancer-marketplace-user1.0
+  freelancer-marketplace-post:
+    container_name: freelancer-marketplace-post
+    image: freelancer-marketplace-post1.0
     ports:
-      - "3334:3334"
+      - "3335:3335"
     depends_on:
-      - mysql-container
+      - mysql-post-db-container
     build:
       dockerfile: Dockerfile  # Reference the Dockerfile
       context: .
@@ -34,12 +34,12 @@ services:
     environment:
       - DATABASE_HOST=$DATABASE_HOST
       - DATABASE_PORT=3306
-      - DATABASE_USERNAME=$DATABASE_USERNAME #admin-user-service
+      - DATABASE_USERNAME=$DATABASE_USERNAME #admin-post-service
       - DATABASE_PASSWORD=$MYSQL_DB_PASSWORD
       - DATABASE_NAME=$DATABASE_NAME
     networks:
       - default
 
 volumes:
-  mysqldata:
+  mysql_post_service_data:
   

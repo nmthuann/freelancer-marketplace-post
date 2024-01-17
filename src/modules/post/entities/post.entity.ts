@@ -23,12 +23,11 @@ export class PostEntity  extends AbstractBaseEntity { //extends BaseEntity
      // 0: active  1: unchecked 2. stopped 3 tạm ngưng
     status: string;
 
-    @Column()
+    @Column({nullable: true, default:""})
     FAQ: string
 
 
     @OneToMany(() => ImageEntity, (image) => image.post)
-    //@JoinColumn({name: 'image_id'})
     images?: ImageEntity[];
 
 
@@ -46,7 +45,6 @@ export class PostEntity  extends AbstractBaseEntity { //extends BaseEntity
 
     // REVIEW (FK)
     @OneToMany(() => ReviewEntity, (review) => review.post)
-    //@JoinColumn({name: 'image_id'})
     reviews?: ReviewEntity[];
     
 }

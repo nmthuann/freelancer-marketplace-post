@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { PackageEntity } from "./package.entity";
 
 /**
  * 1. package_id (PK)
@@ -12,7 +13,7 @@ export class PriceEntity {
     @PrimaryColumn()
     package_id: number;
 
-    @PrimaryColumn('date')
+    @PrimaryColumn('datetime')
     begin_at: Date;
 
     @Column({ nullable: false })
@@ -20,6 +21,12 @@ export class PriceEntity {
 
     // @Column()
     // user_id: Date;
+
+    // Bảng packages có khóa ngoại tham chiếu đến bảng posts
+    @ManyToOne(() => PackageEntity, { onUpdate: 'CASCADE' }) 
+    @JoinColumn({ name: 'package_id' })
+    package: PackageEntity;
+
 
     @CreateDateColumn({
     name: 'created_at',

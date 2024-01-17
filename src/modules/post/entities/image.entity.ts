@@ -1,6 +1,6 @@
 // image.entity.ts
 
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { PostEntity } from './post.entity';
 
 
@@ -12,6 +12,7 @@ export class ImageEntity {
   @ManyToOne(() => PostEntity, (post) => post.images, {
     onUpdate: 'CASCADE',
   })
+  @JoinColumn({ name: 'post_id' })
   post: PostEntity;
 
   @Column({ nullable: false })

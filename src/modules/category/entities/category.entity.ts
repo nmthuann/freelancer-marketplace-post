@@ -1,5 +1,5 @@
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, DeepPartial, ManyToOne, OneToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
 import { MajorEntity } from "../../major/entities/major.entity"
 import { AbstractBaseEntity } from "src/modules/base/base.abstract.entity";
 
@@ -12,7 +12,7 @@ export class CategoryEntity extends AbstractBaseEntity {
     @Column({nullable: false})
     category_name: string
 
-    @Column({nullable: true})
+    @Column({nullable: true, default: ""})
     description?: string;
 
     /**
