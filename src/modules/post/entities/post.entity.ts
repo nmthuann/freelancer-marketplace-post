@@ -20,7 +20,7 @@ export class PostEntity  extends AbstractBaseEntity { //extends BaseEntity
     description: string;
 
     @Column({ default: 'active' }) // length: 50,
-     // 0: active  1: unchecked 2. stopped 3 tạm ngưng
+    // 0: active  1: unchecked 2. stopped 3 tạm ngưng
     status: string;
 
     @Column({nullable: true, default:""})
