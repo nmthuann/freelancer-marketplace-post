@@ -8,7 +8,7 @@ export class PostService {
 
     constructor(
         @InjectRepository(Post)
-        private categoryRepository: Repository<Post>,
+        private postRepository: Repository<Post>,
     ){
 
     }
