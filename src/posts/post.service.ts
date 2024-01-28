@@ -9,6 +9,9 @@ export class PostService {
     constructor(
         @InjectRepository(Post)
         private postRepository: Repository<Post>,
+
+        // private sagaManager: SagaManager,
+        
     ){
 
     }
