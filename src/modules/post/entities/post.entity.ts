@@ -4,9 +4,10 @@ import { MajorEntity } from "src/modules/major/entities/major.entity";
 import { PackageEntity } from "./package.entity";
 import { ReviewEntity } from "src/modules/review/entities/review.entity";
 import { AbstractBaseEntity } from "src/modules/base/base.abstract.entity";
+import { AggregateRoot } from "@nestjs/cqrs";
 
 @Entity({name: 'Posts'})
-export class PostEntity  extends AbstractBaseEntity { //extends BaseEntity
+export class PostEntity  extends AbstractBaseEntity  { //extends BaseEntity
     @PrimaryGeneratedColumn('uuid')
     post_id: string;
 
